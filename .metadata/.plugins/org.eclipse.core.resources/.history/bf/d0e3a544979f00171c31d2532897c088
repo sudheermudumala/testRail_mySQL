@@ -1,0 +1,39 @@
+package com.weather.bigweb;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.weather.bigweb.model.TestPlan;
+import com.weather.bigweb.model.TestRun;
+
+@RestController
+public class MainController {
+
+	@Autowired
+	private TestPlanDao testPlanDao;
+
+	@Autowired
+	private TestRunDao testRunDao;
+
+	@Autowired
+	private CustomQueriesDao customQueriesDao;
+
+	@GetMapping("/testPlan")
+	public List<TestPlan> getPlan() {
+		return this.testPlanDao.testPlan();
+	}
+
+	@GetMapping("/testRun")
+	public List<TestRun> getRun() {
+		return this.testRunDao.testRun();
+	}
+
+	@GetMapping("/testGeneric")
+	public List<Map<String, Object>> getGenericExample() {
+		return this.customQueriesDao.getGenericExample();
+	}
+}

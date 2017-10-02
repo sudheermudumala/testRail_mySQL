@@ -1,0 +1,12 @@
+package com.weather.bigweb;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.transaction.Transactional;
+
+@Transactional
+public interface CustomQueriesDao {
+
+	public List<Map<String, Object>> getGenericExample();
+}
